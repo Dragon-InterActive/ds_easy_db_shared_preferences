@@ -1,0 +1,20 @@
+name: ds_easy_db_shared_preferences
+description: "SharedPreferences implementation for DS-EasyDB. Provides simple key-value storage for Flutter applications."
+version: 1.0.0
+homepage: https://github.com/Dragon-InterActive/ds_easy_db_hive
+license: BSD-3-Clause
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.35.1'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  ds_easy_db: ^1.0.0
+  shared_preferences: ^2.5.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
