@@ -2,6 +2,24 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ds_easy_db/ds_easy_db.dart';
 
+/// SharedPreferences implementation of [DatabaseRepository].
+///
+/// Provides platform-native key-value storage using Flutter's SharedPreferences.
+/// Actively maintained by the Flutter team with cross-platform support.
+///
+/// Features:
+/// - Platform-native storage (NSUserDefaults on iOS, SharedPreferences on Android)
+/// - Cross-platform (iOS, Android, Web, Windows, macOS, Linux)
+/// - Simple and reliable
+/// - No encryption (use SecureStorageDatabase for sensitive data)
+///
+/// Example:
+/// ```dart
+/// db.configure(
+///   prefs: SharedPreferencesDatabase(),
+///   // ...
+/// );
+/// ```
 class SharedPreferencesDatabase implements DatabaseRepository {
   SharedPreferences? _prefs;
 

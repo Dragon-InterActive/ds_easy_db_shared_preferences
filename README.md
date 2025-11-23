@@ -16,8 +16,8 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  ds_easy_db: ^1.0.0
-  ds_easy_db_shared_preferences: ^1.0.0
+  ds_easy_db: ^1.0.1
+  ds_easy_db_shared_preferences: ^1.0.1
 ```
 
 ## Usage
