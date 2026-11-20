@@ -16,8 +16,8 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  ds_easy_db: ^1.0.1
-  ds_easy_db_shared_preferences: ^1.0.1
+  ds_easy_db: ^1.1.1
+  ds_easy_db_shared_preferences: ^1.1.0
 ```
 
 ## Usage
@@ -62,7 +62,7 @@ class DS-EasyDBConfig {
 
 ```dart
 // Save user preferences
-await db.prefs.set('settings', 'user_prefs', {
+await db.prefs!.set('settings', 'user_prefs', {
   'theme': 'dark',
   'language': 'en',
   'notifications': true,
@@ -70,11 +70,11 @@ await db.prefs.set('settings', 'user_prefs', {
 });
 
 // Read preferences
-final prefs = await db.prefs.get('settings', 'user_prefs');
+final prefs = await db.prefs!.get('settings', 'user_prefs');
 print('Theme: ${prefs?['theme']}'); // dark
 
 // Update specific fields
-await db.prefs.update('settings', 'user_prefs', {
+await db.prefs!.update('settings', 'user_prefs', {
   'theme': 'light',
 });
 ```
@@ -83,15 +83,15 @@ await db.prefs.update('settings', 'user_prefs', {
 
 ```dart
 // Save API configuration
-await db.prefs.set('config', 'api', {
+await db.prefs!.set('config', 'api', {
   'baseUrl': 'https://api.example.com',
   'timeout': 30,
   'version': '1.0.0',
 });
 
 // Check if exists
-if (await db.prefs.exists('config', 'api')) {
-  final config = await db.prefs.get('config', 'api');
+if (await db.prefs!.exists('config', 'api')) {
+  final config = await db.prefs!.get('config', 'api');
   print('API URL: ${config?['baseUrl']}');
 }
 ```
@@ -100,7 +100,7 @@ if (await db.prefs.exists('config', 'api')) {
 
 ```dart
 // Save session data
-await db.prefs.set('session', 'current', {
+await db.prefs!.set('session', 'current', {
   'userId': '12345',
   'username': 'john_doe',
   'lastLogin': DatabaseRepository.serverTS,
@@ -108,29 +108,29 @@ await db.prefs.set('session', 'current', {
 });
 
 // Get all sessions
-final allSessions = await db.prefs.getAll('session');
+final allSessions = await db.prefs!.getAll('session');
 print('Total sessions: ${allSessions?.length}');
 
 // Clear session
-await db.prefs.delete('session', 'current');
+await db.prefs!.delete('session', 'current');
 ```
 
 ### Query Data
 
 ```dart
 // Store multiple items
-await db.prefs.set('bookmarks', 'bm1', {'url': 'example.com', 'favorite': true});
-await db.prefs.set('bookmarks', 'bm2', {'url': 'flutter.dev', 'favorite': false});
-await db.prefs.set('bookmarks', 'bm3', {'url': 'dart.dev', 'favorite': true});
+await db.prefs!.set('bookmarks', 'bm1', {'url': 'example.com', 'favorite': true});
+await db.prefs!.set('bookmarks', 'bm2', {'url': 'flutter.dev', 'favorite': false});
+await db.prefs!.set('bookmarks', 'bm3', {'url': 'dart.dev', 'favorite': true});
 
 // Query favorites
-final favorites = await db.prefs.query('bookmarks', 
+final favorites = await db.prefs!.query('bookmarks', 
   where: {'favorite': true}
 );
 print('Favorite bookmarks: ${favorites.length}'); // 2
 
 // Check if any bookmark exists with condition
-final hasFavorites = await db.prefs.existsWhere('bookmarks',
+final hasFavorites = await db.prefs!.existsWhere('bookmarks',
   where: {'favorite': true}
 );
 print('Has favorites: $hasFavorites'); // true

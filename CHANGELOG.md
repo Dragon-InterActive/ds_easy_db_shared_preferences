@@ -1,3 +1,12 @@
+## 1.1.0
+
+* Fixed: `DateTime` values made `set`/`update` throw; they are stored as
+  ISO-8601 strings now.
+* Fixed: foreign or malformed entries with a matching key prefix made
+  `get`, `getAll` and `query` throw; they are skipped now.
+* `query` results include the document id as `id` (a document's own `id`
+  field is kept).
+
 ## 1.0.1
 
 * Added dartdoc comments to public API
